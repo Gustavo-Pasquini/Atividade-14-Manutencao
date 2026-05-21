@@ -5,18 +5,24 @@ public class Veiculo {
     private String placa;
     private String modelo;
     private String cor;
-    private String seguradora;
-    private String numeroApolice;
-    private String telefoneAssistencia;
+    private Seguro seguro;
 
     public Veiculo(String placa, String modelo, String cor,
                    String seguradora, String numeroApolice, String telefoneAssistencia) {
         this.placa = placa;
         this.modelo = modelo;
         this.cor = cor;
-        this.seguradora = seguradora;
-        this.numeroApolice = numeroApolice;
-        this.telefoneAssistencia = telefoneAssistencia;
+        this.seguro = new Seguro();
+
+        if (seguradora != null) {
+            seguro.setSeguradora(seguradora);
+        }
+        if (numeroApolice != null) {
+            seguro.setNumeroApolice(numeroApolice);
+        }
+        if (telefoneAssistencia != null) {
+            seguro.setTelefoneAssistencia(telefoneAssistencia);
+        }
     }
 
     public void imprimirDados() {
@@ -27,7 +33,7 @@ public class Veiculo {
     }
 
     public String getDadosSeguroFormatados() {
-        return seguradora + " | Apólice " + numeroApolice + " | Assistência " + telefoneAssistencia;
+        return seguro.getDadosSeguroFormatados();
     }
 
     public String getPlaca() {
@@ -43,14 +49,14 @@ public class Veiculo {
     }
 
     public String getSeguradora() {
-        return seguradora;
+        return seguro.getSeguradora();
     }
 
     public String getNumeroApolice() {
-        return numeroApolice;
+        return seguro.getNumeroApolice();
     }
 
     public String getTelefoneAssistencia() {
-        return telefoneAssistencia;
+        return seguro.getTelefoneAssistencia();
     }
 }
