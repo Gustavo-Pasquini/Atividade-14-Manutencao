@@ -6,11 +6,7 @@ public class Cliente {
     private int pontosFidelidade;
     private int mesesComoCliente;
     private boolean mensalista;
-
-    private String banco;
-    private String agencia;
-    private String conta;
-    private String metodoPagamentoPreferencial;
+    private Cobranca cobranca;
 
     public Cliente(String nome, String cpf, String telefone,
                    int pontosFidelidade, int mesesComoCliente, boolean mensalista,
@@ -21,10 +17,7 @@ public class Cliente {
         this.pontosFidelidade = pontosFidelidade;
         this.mesesComoCliente = mesesComoCliente;
         this.mensalista = mensalista;
-        this.banco = banco;
-        this.agencia = agencia;
-        this.conta = conta;
-        this.metodoPagamentoPreferencial = metodoPagamentoPreferencial;
+        this.cobranca = new Cobranca(banco, agencia, conta, metodoPagamentoPreferencial);
     }
 
     public void imprimirResumo() {
@@ -37,8 +30,7 @@ public class Cliente {
     }
 
     public String getDadosCobrancaFormatados() {
-        return banco + " | Agência " + agencia + " | Conta " + conta
-                + " | Método preferencial: " + metodoPagamentoPreferencial;
+        return cobranca.getDadosCobrancaFormatados();
     }
 
     public int calcularDescontoCliente() {
@@ -82,18 +74,18 @@ public class Cliente {
     }
 
     public String getBanco() {
-        return banco;
+        return cobranca.getBanco();
     }
 
     public String getAgencia() {
-        return agencia;
+        return cobranca.getAgencia();
     }
 
     public String getConta() {
-        return conta;
+        return cobranca.getConta();
     }
 
     public String getMetodoPagamentoPreferencial() {
-        return metodoPagamentoPreferencial;
+        return cobranca.getMetodoPagamentoPreferencial();
     }
 }
