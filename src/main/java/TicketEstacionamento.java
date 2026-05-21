@@ -1,4 +1,5 @@
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class TicketEstacionamento {
@@ -43,6 +44,12 @@ public class TicketEstacionamento {
         }
     }
 
+    public long calcularMinutosPermanencia() {
+        return Duration.between(
+                this.getDataHoraEntrada(),
+                this.getDataHoraSaidaPrevista()).toMinutes();
+    }
+
     public String getCodigo() {
         return codigo;
     }
@@ -60,10 +67,10 @@ public class TicketEstacionamento {
     }
 
     public LocalDateTime getDataHoraEntrada() {
-        return veiculo.getDataHoraEntrada();
+        return dataHoraEntrada;
     }
 
     public LocalDateTime getDataHoraSaidaPrevista() {
-        return veiculo.getDataHoraSaidaPrevista();
+        return dataHoraSaidaPrevista;
     }
 }
